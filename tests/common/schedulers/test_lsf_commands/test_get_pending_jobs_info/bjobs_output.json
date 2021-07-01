@@ -1,18 +1,42 @@
 {
   "COMMAND":"bjobs",
-  "JOBS":2,
+  "JOBS":3,
   "RECORDS":[
-      {
-      "JOBID":"221",
+    {
+      "JOBID":"224",
       "QUEUE":"receiver",
       "STAT":"PEND",
-      "JOB_NAME":"sleep 1h"
-      },
-      {
-      "JOBID":"222",
+      "JOB_NAME":"sleep 1hz",
+      "PEND_REASON":"There are no suitable hosts for the job;",
+      "MIN_REQ_PROC":"",
+      "MAX_REQ_PROC":"",
+      "COMBINED_RESREQ":"select[type == local] order[r15s:pg] rusage[tmp=1048576.00:swp=1024.00:mem=512.00]",
+      "LICPROJECT":"",
+      "NREQ_SLOT":"1"
+    },
+    {
+      "JOBID":"225",
       "QUEUE":"receiver",
       "STAT":"PEND",
-      "JOB_NAME":"sleep 1h"
-      }
+      "JOB_NAME":"sleep 1hz",
+      "PEND_REASON":"There are no suitable hosts for the job;",
+      "MIN_REQ_PROC":"",
+      "MAX_REQ_PROC":"",
+      "COMBINED_RESREQ":"select[type == local] order[r15s:pg] rusage[tmp=1048576.00:swp=1024.00:mem=512.00]",
+      "LICPROJECT":"",
+      "NREQ_SLOT":"1"
+    },
+    {
+      "JOBID":"226",
+      "QUEUE":"receiver",
+      "STAT":"PEND",
+      "JOB_NAME":"sleep 1hz",
+      "PEND_REASON":"There are no suitable hosts for the job;",
+      "MIN_REQ_PROC":"2",
+      "MAX_REQ_PROC":"2",
+      "COMBINED_RESREQ":"select[type == local] order[r15s:pg] rusage[tmp=1048576.00:swp=1024.00:mem=512.00]",
+      "LICPROJECT":"",
+      "NREQ_SLOT":"2"
+    }
   ]
 }

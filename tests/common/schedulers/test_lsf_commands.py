@@ -71,46 +71,94 @@ def test_get_compute_nodes_info(bhosts_mocked_response, expected_output, mocker,
             None,
             {
                 "COMMAND":"bjobs",
-                "JOBS":6,
+                "JOBS":7,
                 "RECORDS":[
-                    {
-                    "JOBID":"217",
-                    "QUEUE":"receiver",
-                    "STAT":"RUN",
-                    "JOB_NAME":"sleep 1h"
-                    },
-                    {
-                    "JOBID":"218",
-                    "QUEUE":"receiver",
-                    "STAT":"RUN",
-                    "JOB_NAME":"sleep 1h"
-                    },
                     {
                     "JOBID":"219",
                     "QUEUE":"receiver",
                     "STAT":"RUN",
-                    "JOB_NAME":"sleep 1h"
+                    "JOB_NAME":"sleep 1h",
+                    "PEND_REASON":"",
+                    "MIN_REQ_PROC":"",
+                    "MAX_REQ_PROC":"",
+                    "COMBINED_RESREQ":"select[type == local] order[r15s:pg]",
+                    "LICPROJECT":"",
+                    "NREQ_SLOT":"1"
                     },
                     {
                     "JOBID":"220",
                     "QUEUE":"receiver",
                     "STAT":"RUN",
-                    "JOB_NAME":"sleep 1h"
+                    "JOB_NAME":"sleep 1h",
+                    "PEND_REASON":"",
+                    "MIN_REQ_PROC":"",
+                    "MAX_REQ_PROC":"",
+                    "COMBINED_RESREQ":"select[type == local] order[r15s:pg]",
+                    "LICPROJECT":"",
+                    "NREQ_SLOT":"1"
                     },
                     {
                     "JOBID":"221",
                     "QUEUE":"receiver",
-                    "STAT":"PEND",
-                    "JOB_NAME":"sleep 1h"
+                    "STAT":"RUN",
+                    "JOB_NAME":"sleep 1h",
+                    "PEND_REASON":"",
+                    "MIN_REQ_PROC":"",
+                    "MAX_REQ_PROC":"",
+                    "COMBINED_RESREQ":"select[type == local] order[r15s:pg]",
+                    "LICPROJECT":"",
+                    "NREQ_SLOT":"1"
                     },
                     {
                     "JOBID":"222",
                     "QUEUE":"receiver",
+                    "STAT":"RUN",
+                    "JOB_NAME":"sleep 1h",
+                    "PEND_REASON":"",
+                    "MIN_REQ_PROC":"",
+                    "MAX_REQ_PROC":"",
+                    "COMBINED_RESREQ":"select[type == local] order[r15s:pg]",
+                    "LICPROJECT":"",
+                    "NREQ_SLOT":"1"
+                    },
+                    {
+                    "JOBID":"224",
+                    "QUEUE":"receiver",
                     "STAT":"PEND",
-                    "JOB_NAME":"sleep 1h"
+                    "JOB_NAME":"sleep 1hz",
+                    "PEND_REASON":"There are no suitable hosts for the job;",
+                    "MIN_REQ_PROC":"",
+                    "MAX_REQ_PROC":"",
+                    "COMBINED_RESREQ":"select[type == local] order[r15s:pg] rusage[tmp=1048576.00:swp=1024.00:mem=512.00]",
+                    "LICPROJECT":"",
+                    "NREQ_SLOT":"1"
+                    },
+                    {
+                    "JOBID":"225",
+                    "QUEUE":"receiver",
+                    "STAT":"PEND",
+                    "JOB_NAME":"sleep 1hz",
+                    "PEND_REASON":"There are no suitable hosts for the job;",
+                    "MIN_REQ_PROC":"",
+                    "MAX_REQ_PROC":"",
+                    "COMBINED_RESREQ":"select[type == local] order[r15s:pg] rusage[tmp=1048576.00:swp=1024.00:mem=512.00]",
+                    "LICPROJECT":"",
+                    "NREQ_SLOT":"1"
+                    },
+                    {
+                    "JOBID":"226",
+                    "QUEUE":"receiver",
+                    "STAT":"PEND",
+                    "JOB_NAME":"sleep 1hz",
+                    "PEND_REASON":"There are no suitable hosts for the job;",
+                    "MIN_REQ_PROC":"2",
+                    "MAX_REQ_PROC":"2",
+                    "COMBINED_RESREQ":"select[type == local] order[r15s:pg] rusage[tmp=1048576.00:swp=1024.00:mem=512.00]",
+                    "LICPROJECT":"",
+                    "NREQ_SLOT":"2"
                     }
                 ]
-            },
+            }
         ),
         ("bjobs_empty.json", None, None, []),
         ("bjobs_error.json", None, None, [])
@@ -129,7 +177,7 @@ def test_get_jobs_info(bjobs_mocked_response, filter_by_states, filter_by_exec_h
 
     jobs = get_jobs_info(filter_by_states, filter_by_exec_hosts)
 
-    mock.assert_called_with('bjobs -o "JOBID QUEUE STAT JOB_NAME" -json', raise_on_error=False)
+    mock.assert_called_with('bjobs -o "JOBID QUEUE STAT JOB_NAME pend_reason min_req_proc max_req_proc combined_resreq licproject nreq_slot" -json', raise_on_error=False)
     assert_that(jobs).is_equal_to(expected_output)
 
 @pytest.mark.parametrize(
@@ -141,22 +189,46 @@ def test_get_jobs_info(bjobs_mocked_response, filter_by_states, filter_by_exec_h
             None,
             {
                 "COMMAND":"bjobs",
-                "JOBS":2,
+                "JOBS":3,
                 "RECORDS":[
                     {
-                    "JOBID":"221",
+                    "JOBID":"224",
                     "QUEUE":"receiver",
                     "STAT":"PEND",
-                    "JOB_NAME":"sleep 1h"
+                    "JOB_NAME":"sleep 1hz",
+                    "PEND_REASON":"There are no suitable hosts for the job;",
+                    "MIN_REQ_PROC":"",
+                    "MAX_REQ_PROC":"",
+                    "COMBINED_RESREQ":"select[type == local] order[r15s:pg] rusage[tmp=1048576.00:swp=1024.00:mem=512.00]",
+                    "LICPROJECT":"",
+                    "NREQ_SLOT":"1"
                     },
                     {
-                    "JOBID":"222",
+                    "JOBID":"225",
                     "QUEUE":"receiver",
                     "STAT":"PEND",
-                    "JOB_NAME":"sleep 1h"
+                    "JOB_NAME":"sleep 1hz",
+                    "PEND_REASON":"There are no suitable hosts for the job;",
+                    "MIN_REQ_PROC":"",
+                    "MAX_REQ_PROC":"",
+                    "COMBINED_RESREQ":"select[type == local] order[r15s:pg] rusage[tmp=1048576.00:swp=1024.00:mem=512.00]",
+                    "LICPROJECT":"",
+                    "NREQ_SLOT":"1"
+                    },
+                    {
+                    "JOBID":"226",
+                    "QUEUE":"receiver",
+                    "STAT":"PEND",
+                    "JOB_NAME":"sleep 1hz",
+                    "PEND_REASON":"There are no suitable hosts for the job;",
+                    "MIN_REQ_PROC":"2",
+                    "MAX_REQ_PROC":"2",
+                    "COMBINED_RESREQ":"select[type == local] order[r15s:pg] rusage[tmp=1048576.00:swp=1024.00:mem=512.00]",
+                    "LICPROJECT":"",
+                    "NREQ_SLOT":"2"
                     }
                 ]
-            },
+            }
         ),
         ("bjobs_empty.json", None, None, []),
         ("bjobs_error.json", None, None, [])
@@ -175,5 +247,5 @@ def test_get_pending_jobs_info(bjobs_mocked_response, max_slots_filter, skip_if_
 
     jobs = get_pending_jobs_info(max_slots_filter, skip_if_state)
 
-    mock.assert_called_with('bjobs -p -o "JOBID QUEUE STAT JOB_NAME" -json', raise_on_error=False)
+    mock.assert_called_with('bjobs -p -o "JOBID QUEUE STAT JOB_NAME pend_reason min_req_proc max_req_proc combined_resreq licproject nreq_slot" -json', raise_on_error=False)
     assert_that(jobs).is_equal_to(expected_output)

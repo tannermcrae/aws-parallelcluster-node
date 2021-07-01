@@ -4,11 +4,10 @@ import logging
 
 
 def _run_bjobs(full_format=False, hostname_filter=None, job_state_filter=None):
-#   pending_filter = '-p' if job_state_filter else ''
     if job_state_filter == 'p':
-        cmd = 'bjobs -p -o "JOBID QUEUE STAT JOB_NAME" -json'
+        cmd = 'bjobs -p -o "JOBID QUEUE STAT JOB_NAME pend_reason min_req_proc max_req_proc combined_resreq licproject nreq_slot" -json'
     else:    
-        cmd = 'bjobs -o "JOBID QUEUE STAT JOB_NAME" -json'
+        cmd = 'bjobs -o "JOBID QUEUE STAT JOB_NAME pend_reason min_req_proc max_req_proc combined_resreq licproject nreq_slot" -json'
         
     return check_command_output(cmd, raise_on_error=False)
 
