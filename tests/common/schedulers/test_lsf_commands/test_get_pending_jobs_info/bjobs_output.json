@@ -1,0 +1,18 @@
+{
+  "COMMAND":"bjobs",
+  "JOBS":2,
+  "RECORDS":[
+      {
+      "JOBID":"221",
+      "QUEUE":"receiver",
+      "STAT":"PEND",
+      "JOB_NAME":"sleep 1h"
+      },
+      {
+      "JOBID":"222",
+      "QUEUE":"receiver",
+      "STAT":"PEND",
+      "JOB_NAME":"sleep 1h"
+      }
+  ]
+}

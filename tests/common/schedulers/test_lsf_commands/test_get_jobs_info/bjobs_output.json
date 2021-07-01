@@ -1,0 +1,42 @@
+{
+  "COMMAND":"bjobs",
+  "JOBS":6,
+  "RECORDS":[
+    {
+      "JOBID":"217",
+      "QUEUE":"receiver",
+      "STAT":"RUN",
+      "JOB_NAME":"sleep 1h"
+    },
+    {
+      "JOBID":"218",
+      "QUEUE":"receiver",
+      "STAT":"RUN",
+      "JOB_NAME":"sleep 1h"
+    },
+    {
+      "JOBID":"219",
+      "QUEUE":"receiver",
+      "STAT":"RUN",
+      "JOB_NAME":"sleep 1h"
+    },
+    {
+      "JOBID":"220",
+      "QUEUE":"receiver",
+      "STAT":"RUN",
+      "JOB_NAME":"sleep 1h"
+    },
+    {
+      "JOBID":"221",
+      "QUEUE":"receiver",
+      "STAT":"PEND",
+      "JOB_NAME":"sleep 1h"
+    },
+    {
+      "JOBID":"222",
+      "QUEUE":"receiver",
+      "STAT":"PEND",
+      "JOB_NAME":"sleep 1h"
+    }
+  ]
+}

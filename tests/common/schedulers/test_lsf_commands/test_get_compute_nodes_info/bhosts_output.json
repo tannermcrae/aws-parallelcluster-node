@@ -1,0 +1,16 @@
+{
+  "COMMAND":"bhosts",
+  "HOSTS":1,
+  "RECORDS":[
+    {
+      "HOST_NAME":"ip-10-30-9-105",
+      "STATUS":"closed_Full",
+      "MAX":"4",
+      "NJOBS":"4",
+      "RUN":"4",
+      "SSUSP":"0",
+      "USUSP":"0",
+      "RSV":"0"
+    }
+  ]
+}
